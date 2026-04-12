@@ -1,4 +1,0 @@
-Lema X. Pontos q, r estão a uma distância máxima de x posições em S_y. Prove o Lema X para x < 15?
-
-Aluno: Vítor Feijó
-
