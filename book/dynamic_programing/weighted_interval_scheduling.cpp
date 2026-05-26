@@ -7,7 +7,7 @@ typedef struct {
   int w;
 } interval;
 
-vector<int> scheduling(vector<interval> &I);
+int scheduling(vector<interval> &I);
 void print_interval(interval i);
 bool interval_sort(const interval &a, const interval &b);
 
@@ -26,7 +26,21 @@ int main(){
     I.push_back(temp);
   }
 
-  scheduling(I);
+  sort(I.begin(), I.end(), interval_sort);
+
+  vector<int> P(n, 0);
+
+  for(int i = 0; i < n; i++){
+    P[i] = -1;
+    for(int j = i - 1; j > 0; j--){
+      if(I[j].e <= I[i].s){
+        P[i] = i;
+        break;
+      }
+    }
+  }
+
+  int value = scheduling(I, P);
 
 
   for(int i = 0; i < size(I); i++){
@@ -36,25 +50,20 @@ int main(){
   return 0;
 }
 
-vector<int> scheduling(vector<interval> &I){
-  int n = size(I);
+int scheduling(vector<interval> &I, vector<int> &P){
+  int n = size(I) - 1;
 
-  sort(I.begin(), I.end(), interval_sort);
-
-  vector<int> P(n);
+  vector<int> opt(n, 0);
 
   for(int i = 0; i < n; i++){
-    if(I[0].e >= I[i].s){
-      P[i] = 0;
-    } 
-    for(int j = i - 1; j > 0; j--){
-      
+    if(i == 0){
+      opt[i] = I[i].w;
+    } else {
+      opt[i] = max(I[i].w + opt[P[i]],opt[i - 1]);
     }
-
   }
-  
 
-
+  return opt[n];
 }
 
 void print_interval(interval i){
