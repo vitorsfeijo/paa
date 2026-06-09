@@ -41,6 +41,62 @@ If there are multiple answers, print any of them.
 #include <bits/stdc++.h>
 using namespace std;
 
+const int N = 300005;
+vector<pair<int, int>> adj[N];
+bool visited[N];
+bool edge_used[N];
+
 int main(){
-  
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n, k, d;
+    if (!(cin >> n >> k >> d)) return 0;
+
+    queue<int> q;
+    for (int i = 0; i < k; ++i) {
+        int p;
+        cin >> p;
+        if (!visited[p]) {
+            visited[p] = true;
+            q.push(p);
+        }
+    }
+
+    for (int i = 1; i <= n - 1; ++i) {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back({v, i});
+        adj[v].push_back({u, i});
+    }
+
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+
+        for (auto& edge : adj[u]) {
+            int v = edge.first;
+            int idx = edge.second;
+            if (!visited[v]) {
+                visited[v] = true;
+                edge_used[idx] = true;
+                q.push(v);
+            }
+        }
+    }
+
+    vector<int> ans;
+    for (int i = 1; i <= n - 1; ++i) {
+        if (!edge_used[i]) {
+            ans.push_back(i);
+        }
+    }
+
+    cout << ans.size() << "\n";
+    for (size_t i = 0; i < ans.size(); ++i) {
+        cout << ans[i] << (i + 1 == ans.size() ? "" : " ");
+    }
+    cout << "\n";
+
+    return 0;
 }
