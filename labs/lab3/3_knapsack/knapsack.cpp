@@ -19,18 +19,21 @@ int main(){
     itens[i] = temp;
   }
 
-  vector<vector<int>> opt(n, vector<int>(weight, 0));
+  vector<vector<int>> opt(n+1, vector<int>(weight+1, 0));
 
   //base cases
   //if the weight is zero, zero itens can be carried
   for(int i = 0; i < n; i++){
     opt[i][0] = 0;
   }
-
+  //or zero itens
+  for(int w = 0; w < weight; w++){
+    opt[1][w] = 0;
+  }
 
   //recursion
   for(int i = 1; i < n; i++){
-    for(int w = 0; w < weight; w++){
+    for(int w = 1; w < weight; w++){
       //weight of item is bigger than possible(out of bounds check)
       if(itens[i].weight >= w){
         opt[i][w] = opt[i-1][w];
