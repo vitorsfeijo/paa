@@ -1,10 +1,10 @@
-#include <bits/stdc++>
+#include <bits/stdc++.h>
 using namespace std;
 
-struct item{
+struct item {
   int weight;
   int value;
-}
+};
 
 
 int main(){
@@ -14,28 +14,19 @@ int main(){
   vector<item> itens(n + 1);
   item temp;
   
-  for(int i = 1; i < n; i++){
+  for(int i = 1; i < n + 1; i++){
     cin >> temp.weight >> temp.value;
     itens[i] = temp;
   }
 
   vector<vector<int>> opt(n+1, vector<int>(weight+1, 0));
 
-  //base cases
-  //if the weight is zero, zero itens can be carried
-  for(int i = 0; i < n; i++){
-    opt[i][0] = 0;
-  }
-  //or zero itens
-  for(int w = 0; w < weight; w++){
-    opt[1][w] = 0;
-  }
 
   //recursion
-  for(int i = 1; i < n; i++){
-    for(int w = 1; w < weight; w++){
+  for(int i = 1; i <= n; i++){
+  for(int w = 1; w <= weight; w++){
       //weight of item is bigger than possible(out of bounds check)
-      if(itens[i].weight >= w){
+      if(itens[i].weight > w){
         opt[i][w] = opt[i-1][w];
         continue;
       }
