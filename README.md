@@ -70,8 +70,8 @@ Práticas de plataformas e competições de programação:
 
 - **CSES Problem Set:** Vários problemas nas categorias *Introductory Problems* e *Dynamic Programming* ([cprom/cses/](cprom/cses)) - [Link](https://cses.fi/problemset/).
 - **Codeforces:** Competições e grupos de estudo ([cprom/codeforces/](cprom/codeforces)):
-  - [Contest 223206](https://codeforces.com/group/MWSDmqGsZm/contest/223206)
-  - [Contest 223207](https://codeforces.com/group/MWSDmqGsZm/contest/223207)
-  - [Contest 223340](https://codeforces.com/group/MWSDmqGsZm/contest/223340)
+  - [General Easy](https://codeforces.com/group/MWSDmqGsZm/contest/223206)
+  - [General Medium](https://codeforces.com/group/MWSDmqGsZm/contest/223207)
+  - [General Hard](https://codeforces.com/group/MWSDmqGsZm/contest/223340)
 - **Beecrowd:** [Binary Search Tree](cprom/beecrowd/1195_bynary_serach_tree/1195_bynary_serach_tree.cpp)
 - **Brasileirão:** [Problem 1](cprom/brasileirao/problem1.cpp)
